@@ -27,7 +27,7 @@ from isaaclab.assets import (
     SurfaceGripper,
     SurfaceGripperCfg,
 )
-from isaaclab.sensors import ContactSensorCfg, FrameTransformerCfg, SensorBase, SensorBaseCfg, VisuoTactileSensorCfg
+from isaaclab.sensors import ContactSensorCfg, FrameTransformerCfg, SensorBase, SensorBaseCfg, TactileArraySensorCfg, VisuoTactileSensorCfg
 from isaaclab.sim import SimulationContext
 from isaaclab.sim.utils.stage import get_current_stage, get_current_stage_id
 from isaaclab.sim.views import XformPrimView
@@ -771,6 +771,14 @@ class InteractiveScene:
                         asset_cfg.camera_cfg.prim_path = asset_cfg.camera_cfg.prim_path.format(
                             ENV_REGEX_NS=self.env_regex_ns
                         )
+                    if (
+                        hasattr(asset_cfg, "contact_object_prim_path_expr")
+                        and asset_cfg.contact_object_prim_path_expr is not None
+                    ):
+                        asset_cfg.contact_object_prim_path_expr = asset_cfg.contact_object_prim_path_expr.format(
+                            ENV_REGEX_NS=self.env_regex_ns
+                        )
+                elif isinstance(asset_cfg, TactileArraySensorCfg):
                     if (
                         hasattr(asset_cfg, "contact_object_prim_path_expr")
                         and asset_cfg.contact_object_prim_path_expr is not None

@@ -8,3 +8,5 @@
 from .visuotactile_sensor import VisuoTactileSensor
 from .visuotactile_sensor_cfg import GelSightRenderCfg, VisuoTactileSensorCfg
 from .visuotactile_sensor_data import VisuoTactileSensorData
+from .tactile_array_sensor import TactileArraySensor
+from .tactile_array_sensor_cfg import TactileArraySensorCfg
